@@ -1,8 +1,10 @@
 import logging
-from config import TOKEN_TELEGRAM
 from telegram import Update
 from telegram.ext import filters, ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler
 from chat_gpt import chat_gpt_response
+import os
+
+SandraRussianTutorBot_TOKEN = os.environ["SandraRussianTutorBot_TOKEN"]
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -28,7 +30,7 @@ async def chat_gpt(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 if __name__ == '__main__':
-    application = ApplicationBuilder().token(TOKEN_TELEGRAM).build()
+    application = ApplicationBuilder().token(SandraRussianTutorBot_TOKEN).build()
 
     # Listens to the command '/start' and runs the function 'start()'
     start_handler = CommandHandler('start', start)

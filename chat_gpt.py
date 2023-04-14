@@ -1,7 +1,7 @@
 import openai
-from config import TOKEN_CHAT_GPT
+import os
 
-openai.api_key = TOKEN_CHAT_GPT
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 
 async def chat_gpt_response(prompt):
