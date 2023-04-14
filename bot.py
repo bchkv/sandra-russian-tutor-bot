@@ -8,7 +8,8 @@ SandraRussianTutorBot_TOKEN = os.environ["SandraRussianTutorBot_TOKEN"]
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
+    level=logging.INFO,
+    filename='sandra_russian_tutor_bot.log',
 )
 
 
