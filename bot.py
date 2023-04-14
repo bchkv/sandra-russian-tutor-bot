@@ -6,11 +6,24 @@ import os
 
 SandraRussianTutorBot_TOKEN = os.environ["SandraRussianTutorBot_TOKEN"]
 
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO,
-    filename='sandra_russian_tutor_bot.log',
-)
+# Set up log formatting
+log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+# Configure the file handler to write logs to a file
+file_handler = logging.FileHandler('sandra_russian_tutor_bot.log')
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(logging.Formatter(log_format))
+
+# Configure the stream handler to output logs to the console
+stream_handler = logging.StreamHandler()
+stream_handler.setLevel(logging.INFO)
+stream_handler.setFormatter(logging.Formatter(log_format))
+
+# Configure the root logger with both handlers
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
